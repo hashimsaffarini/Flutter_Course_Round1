@@ -25,5 +25,3 @@ Welcome to the **Flutter Course Projects Repository**! This repository contains 
 7. **Dart Fundamentals** 🎯
    - Essential Dart programming concepts and best practices.
 
-![Facebook post - 3](https://github.com/user-attachments/assets/9ce53f81-4283-490a-a355-0dcf203d050a)
-
