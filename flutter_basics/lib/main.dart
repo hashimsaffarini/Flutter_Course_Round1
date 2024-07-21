@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_basics/views/pages/home_page.dart';
 
 void main() {
-  runApp( MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -9,25 +10,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: HomePage(),
-    ); //Widget
-  }
-}
-
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        backgroundColor: Colors.red,
-        title:  Text('Home Page'),
-      ),
-      backgroundColor: Colors.black,
     );
   }
 }
+//home_page_sss.dart
