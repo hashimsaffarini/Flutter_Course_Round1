@@ -7,7 +7,6 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.amber,
         centerTitle: true,
         title: const Text('Welcome to Flutter'),
         leading: InkWell(
@@ -29,37 +28,34 @@ class HomePage extends StatelessWidget {
       ),
       body: const Column(
         children: [
-          Row(
-            children: [
-              Text('Hello'),
-              Text('Hello'),
-              Text('Hello'),
-            ],
-          ),
           SizedBox(
-            height: 60,
+            height: 20,
           ),
           Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text('Hello'),
-              Text('Hello'),
-              Text('Hello'),
+              Text(
+                'Hello',
+                style: TextStyle(
+                  color: Colors.blue,
+                  fontSize: 30,
+                  fontWeight: FontWeight.w500,
+                ),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
+              Text(
+                ' World',
+                style: TextStyle(
+                  color: Colors.red,
+                  fontSize: 30,
+                  fontWeight: FontWeight.w500,
+                ),
+              )
             ],
           ),
-          SizedBox(
-            height: 60,
-          ),
-          Row(
-            children: [
-              Text('Hello'),
-              Text('Hello'),
-              Text('Hello'),
-            ],
-          )
         ],
       ),
     );
   }
 }
-//named function.... ananyomous function
-
