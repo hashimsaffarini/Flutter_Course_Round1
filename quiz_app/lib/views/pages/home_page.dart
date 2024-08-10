@@ -12,12 +12,12 @@ class HomePage extends StatelessWidget {
         decoration: const BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              Color(0xffAF7EE7),
-              Color(0xff927AFF),
+              Color(0xFF927AFF),
+              Color(0xFFAF7EE7),
               Color(0xff272052),
             ],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
           ),
         ),
         child: const HomePageBody(),
@@ -25,4 +25,3 @@ class HomePage extends StatelessWidget {
     );
   }
 }
-
