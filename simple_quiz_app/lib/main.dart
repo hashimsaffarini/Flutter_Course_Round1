@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:simple_quiz_app/views/pages/home_page.dart';
+import 'package:simple_quiz_app/views/pages/on_boarding_page.dart';
 
 void main() {
   runApp(const QuizApp());
@@ -10,10 +11,15 @@ class QuizApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Quiz App',
-      home: HomePage(), //? screen or page
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const OnBoardingPage(),
+        '/home': (context) => const HomePage(),
+      },
+      // home: const OnBoardingPage(), //? screen or page
     );
   }
 }
