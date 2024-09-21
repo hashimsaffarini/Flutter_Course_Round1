@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:simple_quiz_app/models/quiz_model.dart';
 
 class HomePageBody extends StatefulWidget {
   const HomePageBody({
@@ -12,20 +13,6 @@ class HomePageBody extends StatefulWidget {
 class _HomePageBodyState extends State<HomePageBody> {
   int currentQuestionIndex = 0;
   int correctAnswers = 0;
-  Map<String, Map<String, dynamic>> quiz = {
-    'What is the capital of Palestine?': {
-      'options': ['Ramallah', 'Jerusalem', 'Nablus', 'Tulkarm'],
-      'answer': 'Jerusalem',
-    },
-    'What is the capital of France?': {
-      'options': ['Paris', 'Lyon', 'Marseille', 'Toulouse'],
-      'answer': 'Paris',
-    },
-    'What is the capital of Germany?': {
-      'options': ['Berlin', 'Hamburg', 'Munich', 'Cologne'],
-      'answer': 'Berlin',
-    },
-  };
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +42,7 @@ class _HomePageBodyState extends State<HomePageBody> {
                   ),
                   const SizedBox(height: 32),
                   Text(
-                    quiz.keys.elementAt(currentQuestionIndex),
+                    quiz[currentQuestionIndex].question,
                     style: const TextStyle(
                       color: Colors.white,
                       fontSize: 36,
@@ -66,19 +53,15 @@ class _HomePageBodyState extends State<HomePageBody> {
                   const SizedBox(height: 32),
                   Column(
                     children: List.generate(
-                      quiz.values
-                          .elementAt(currentQuestionIndex)['options']
-                          .length,
+                      quiz[currentQuestionIndex].options.length,
                       (index) {
                         return Padding(
                           padding: const EdgeInsets.symmetric(vertical: 12),
                           child: ElevatedButton(
                             onPressed: () {
                               setState(() {
-                                if (quiz.values.elementAt(currentQuestionIndex)[
-                                        'options'][index] ==
-                                    quiz.values.elementAt(
-                                        currentQuestionIndex)['answer']) {
+                                if (quiz[currentQuestionIndex].options[index] ==
+                                    quiz[currentQuestionIndex].answer) {
                                   correctAnswers++;
                                 }
                                 currentQuestionIndex++;
@@ -91,8 +74,7 @@ class _HomePageBodyState extends State<HomePageBody> {
                               ),
                             ),
                             child: Text(
-                              quiz.values.elementAt(
-                                  currentQuestionIndex)['options'][index],
+                              quiz[currentQuestionIndex].options[index],
                               style: const TextStyle(
                                 color: Colors.black,
                                 fontSize: 18,
