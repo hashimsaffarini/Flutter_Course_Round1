@@ -1,3 +1,4 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 
 class MusicModel {
@@ -6,7 +7,10 @@ class MusicModel {
 
   MusicModel({required this.color, required this.sound});
 
-  void playSound() {}
+  void playSound() {
+    final player = AudioPlayer();
+    player.play(AssetSource(sound));
+  }
 }
 
 List<MusicModel> musicListModel = [
