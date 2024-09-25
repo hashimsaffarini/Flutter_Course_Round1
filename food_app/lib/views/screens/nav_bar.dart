@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/utils/app_colors.dart';
+import 'package:food_app/utils/app_styles.dart';
 import 'package:food_app/views/screens/home_screen.dart';
 import 'package:food_app/views/screens/profile_screen.dart';
 import 'package:food_app/views/screens/shop_screen.dart';
@@ -22,6 +23,7 @@ class _NavBarState extends State<NavBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // appBar: ,
       body: screens[selectedIndex],
       backgroundColor: Colors.white,
       bottomNavigationBar: Container(
@@ -39,34 +41,45 @@ class _NavBarState extends State<NavBar> {
             topLeft: Radius.circular(24),
             topRight: Radius.circular(24),
           ),
-          child: NavigationBar(
-            height: MediaQuery.of(context).size.height * 0.08,
-            indicatorColor: AppColors.primaryColor,
-            backgroundColor: Colors.white,
-            labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
-            shadowColor: Colors.transparent,
-            selectedIndex: selectedIndex,
-            onDestinationSelected: (int index) {
-              setState(() {
-                selectedIndex = index;
-              });
-            },
-            destinations: const [
-              NavigationDestination(
-                label: 'Home',
-                icon: Icon(
-                  Iconsax.home,
+          child: NavigationBarTheme(
+            data: NavigationBarThemeData(
+              labelTextStyle: WidgetStateProperty.all(
+                AppStyles.roboto12Medium,
+              ),
+            ),
+            child: NavigationBar(
+              overlayColor: WidgetStateProperty.all(
+                AppColors.primaryColor.withOpacity(0.5),
+              ),
+              height: MediaQuery.of(context).size.height * 0.08,
+              indicatorColor: AppColors.primaryColor,
+              backgroundColor: Colors.white,
+              labelBehavior:
+                  NavigationDestinationLabelBehavior.onlyShowSelected,
+              shadowColor: Colors.transparent,
+              selectedIndex: selectedIndex,
+              onDestinationSelected: (int index) {
+                setState(() {
+                  selectedIndex = index;
+                });
+              },
+              destinations: const [
+                NavigationDestination(
+                  label: 'Home',
+                  icon: Icon(
+                    Iconsax.home,
+                  ),
                 ),
-              ),
-              NavigationDestination(
-                label: 'Shoping',
-                icon: Icon(Iconsax.shopping_bag),
-              ),
-              NavigationDestination(
-                label: 'Profile',
-                icon: Icon(Iconsax.user),
-              ),
-            ],
+                NavigationDestination(
+                  label: 'Shoping',
+                  icon: Icon(Iconsax.shopping_bag),
+                ),
+                NavigationDestination(
+                  label: 'Profile',
+                  icon: Icon(Iconsax.user),
+                ),
+              ],
+            ),
           ),
         ),
       ),
