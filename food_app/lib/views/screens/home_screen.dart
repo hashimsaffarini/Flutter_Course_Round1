@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:food_app/models/product_model.dart';
+import 'package:food_app/utils/app_constants.dart';
 import 'package:food_app/views/widgets/categories_list_view.dart';
 import 'package:food_app/views/widgets/categories_text.dart';
 import 'package:food_app/views/widgets/custom_app_bar.dart';
@@ -6,29 +8,54 @@ import 'package:food_app/views/widgets/home_screen_header.dart';
 import 'package:food_app/views/widgets/products_grid_view.dart';
 import 'package:food_app/views/widgets/search_and_filter.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
   @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  late List<ProductModel> filteredProductsList;
+
+  @override
+  void initState() {
+    super.initState();
+    filteredProductsList = productsList.where((product) {
+      return product.id == AppConstants.burger;
+    }).toList();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return const SafeArea(
+    return SafeArea(
       child: Padding(
-        padding: EdgeInsets.only(left: 24, right: 24, top: 24),
+        padding: const EdgeInsets.only(left: 24, right: 24, top: 24),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              CustomAppBar(),
-              SizedBox(height: 32),
-              HomeScreenHeader(),
-              SizedBox(height: 32),
-              SearchAndFilter(),
-              SizedBox(height: 32),
-              CategoriesText(),
-              SizedBox(height: 16),
-              CategoriesListView(),
-              SizedBox(height: 16),
-              ProductsGridView(),
+              const CustomAppBar(),
+              const SizedBox(height: 32),
+              const HomeScreenHeader(),
+              const SizedBox(height: 32),
+              const SearchAndFilter(),
+              const SizedBox(height: 32),
+              const CategoriesText(),
+              const SizedBox(height: 16),
+              CategoriesListView(
+                onCategorySelected: (category) {
+                  setState(() {
+                    filteredProductsList = productsList.where((product) {
+                      return category.id == product.id;
+                    }).toList();
+                  });
+                },
+              ),
+              const SizedBox(height: 16),
+              ProductsGridView(
+                products: filteredProductsList,
+              ),
             ],
           ),
         ),

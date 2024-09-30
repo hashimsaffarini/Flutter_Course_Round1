@@ -2,8 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:food_app/models/category_model.dart';
 import 'package:food_app/views/widgets/categories_list_view_item.dart';
 
-class CategoriesListView extends StatelessWidget {
-  const CategoriesListView({super.key});
+class CategoriesListView extends StatefulWidget {
+  const CategoriesListView({super.key, required this.onCategorySelected});
+  final Function(CategoryModel) onCategorySelected;
+  @override
+  State<CategoriesListView> createState() => _CategoriesListViewState();
+}
+
+class _CategoriesListViewState extends State<CategoriesListView> {
+  int currentSelectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -16,8 +23,17 @@ class CategoriesListView extends StatelessWidget {
         itemBuilder: (context, index) {
           return Padding(
             padding: const EdgeInsets.only(right: 12),
-            child: CategoriesListViewItem(
-              category: categoriesList[index],
+            child: GestureDetector(
+              onTap: () {
+                setState(() {
+                  currentSelectedIndex = index;
+                  widget.onCategorySelected(categoriesList[index]);
+                });
+              },
+              child: CategoriesListViewItem(
+                category: categoriesList[index],
+                isSelected: currentSelectedIndex == index,
+              ),
             ),
           );
         },

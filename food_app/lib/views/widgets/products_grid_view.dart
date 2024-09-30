@@ -3,14 +3,14 @@ import 'package:food_app/models/product_model.dart';
 import 'package:food_app/views/widgets/product_gird_view_item.dart';
 
 class ProductsGridView extends StatelessWidget {
-  const ProductsGridView({super.key});
-
+  const ProductsGridView({super.key, required this.products});
+  final List<ProductModel> products;
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
-      itemCount: productsList.length,
+      itemCount: products.length,
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
         crossAxisSpacing: 16,
@@ -19,7 +19,7 @@ class ProductsGridView extends StatelessWidget {
       ),
       itemBuilder: (context, index) {
         return ProductGirdViewItem(
-          product: productsList[index],
+          product: products[index],
         );
       },
     );

@@ -16,6 +16,9 @@ class SearchAndFilter extends StatelessWidget {
           child: Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
+              border: Border.all(
+                color: const Color(0xffE6E6E6),
+              ),
               color: Colors.white,
               boxShadow: [
                 BoxShadow(
