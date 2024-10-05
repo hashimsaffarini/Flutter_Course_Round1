@@ -46,6 +46,10 @@ class _HomeScreenState extends State<HomeScreen> {
               CategoriesListView(
                 onCategorySelected: (category) {
                   setState(() {
+                    if (category == null) {
+                      filteredProductsList = productsList;
+                      return;
+                    }
                     filteredProductsList = productsList.where((product) {
                       return category.id == product.id;
                     }).toList();

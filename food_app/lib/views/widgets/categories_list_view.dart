@@ -4,7 +4,7 @@ import 'package:food_app/views/widgets/categories_list_view_item.dart';
 
 class CategoriesListView extends StatefulWidget {
   const CategoriesListView({super.key, required this.onCategorySelected});
-  final Function(CategoryModel) onCategorySelected;
+  final Function(CategoryModel?) onCategorySelected;
   @override
   State<CategoriesListView> createState() => _CategoriesListViewState();
 }
@@ -26,6 +26,11 @@ class _CategoriesListViewState extends State<CategoriesListView> {
             child: GestureDetector(
               onTap: () {
                 setState(() {
+                  if (currentSelectedIndex == index) {
+                    widget.onCategorySelected(null);
+                    currentSelectedIndex = -1;
+                    return;
+                  }
                   currentSelectedIndex = index;
                   widget.onCategorySelected(categoriesList[index]);
                 });

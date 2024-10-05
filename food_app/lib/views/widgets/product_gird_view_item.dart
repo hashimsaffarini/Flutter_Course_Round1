@@ -5,6 +5,7 @@ import 'package:food_app/models/product_model.dart';
 import 'package:food_app/utils/app_colors.dart';
 import 'package:food_app/utils/app_styles.dart';
 import 'package:food_app/views/widgets/grid_view_item_rate.dart';
+import 'package:iconsax/iconsax.dart';
 
 class ProductGirdViewItem extends StatefulWidget {
   const ProductGirdViewItem({super.key, required this.product});
@@ -93,12 +94,12 @@ class _ProductGirdViewItemState extends State<ProductGirdViewItem> {
                     ),
                     child: shoppingList.contains(widget.product)
                         ? const Icon(
-                            Icons.check,
+                            Iconsax.heart5,
                             size: 22,
                             color: Colors.white,
                           )
                         : const Icon(
-                            Icons.add,
+                            Iconsax.heart4,
                             size: 22,
                             color: Colors.white,
                           ),
