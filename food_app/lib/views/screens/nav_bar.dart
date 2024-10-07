@@ -17,8 +17,8 @@ class _NavBarState extends State<NavBar> {
   int selectedIndex = 0;
   List<Widget> screens = const [
     HomeScreen(),
-    ShopScreen(),
-    ProfileScreen(),
+    FavoriteScreen(),
+    ShoppingScreen(),
   ];
   @override
   Widget build(BuildContext context) {
@@ -71,12 +71,12 @@ class _NavBarState extends State<NavBar> {
                   ),
                 ),
                 NavigationDestination(
-                  label: 'Shoping',
-                  icon: Icon(Iconsax.shopping_bag),
+                  label: 'Favorite',
+                  icon: Icon(Iconsax.heart),
                 ),
                 NavigationDestination(
-                  label: 'Profile',
-                  icon: Icon(Iconsax.user),
+                  label: 'Shopping',
+                  icon: Icon(Iconsax.shopping_cart),
                 ),
               ],
             ),

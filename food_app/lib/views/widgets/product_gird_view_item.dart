@@ -5,6 +5,7 @@ import 'package:food_app/models/product_model.dart';
 import 'package:food_app/utils/app_colors.dart';
 import 'package:food_app/utils/app_styles.dart';
 import 'package:food_app/views/widgets/grid_view_item_rate.dart';
+import 'package:food_app/views/widgets/princing_widget.dart';
 import 'package:iconsax/iconsax.dart';
 
 class ProductGirdViewItem extends StatefulWidget {
@@ -55,35 +56,18 @@ class _ProductGirdViewItemState extends State<ProductGirdViewItem> {
             const Spacer(),
             Row(
               children: [
-                RichText(
-                  text: TextSpan(
-                    children: [
-                      TextSpan(
-                        text: '\$ ${widget.product.price.toInt()}.',
-                        style: AppStyles.dmSans18Bold.copyWith(
-                            color: AppColors.primaryColor, fontSize: 20),
-                      ),
-                      TextSpan(
-                        text: widget.product.price.toString().split('.')[1],
-                        style: AppStyles.dmSans12Medium.copyWith(
-                          fontSize: 18,
-                          color: AppColors.primaryColor,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+                PricingWidget(price: widget.product.price),
                 const Spacer(),
                 GestureDetector(
                   onTap: () {
                     // widget.product.quantity++;
                     setState(() {
-                      if (shoppingList.contains(widget.product)) {
-                        shoppingList.remove(widget.product);
+                      if (favoriteList.contains(widget.product)) {
+                        favoriteList.remove(widget.product);
                       } else {
-                        shoppingList.add(widget.product);
+                        favoriteList.add(widget.product);
                       }
-                      log('Shopping List: ${shoppingList.length.toString()}');
+                      log('Shopping List: ${favoriteList.length.toString()}');
                     });
                   },
                   child: Container(
@@ -92,7 +76,7 @@ class _ProductGirdViewItemState extends State<ProductGirdViewItem> {
                       color: AppColors.primaryColor,
                       borderRadius: BorderRadius.circular(30),
                     ),
-                    child: shoppingList.contains(widget.product)
+                    child: favoriteList.contains(widget.product)
                         ? const Icon(
                             Iconsax.heart5,
                             size: 22,

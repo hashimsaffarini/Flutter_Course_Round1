@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/models/product_model.dart';
 import 'package:food_app/utils/app_colors.dart';
-import 'package:food_app/views/widgets/add_remove_widget.dart';
+import 'package:food_app/utils/app_styles.dart';
+import 'package:food_app/utils/font_wieght_helper.dart';
+import 'package:food_app/views/widgets/add_to_cart_button.dart';
+import 'package:food_app/views/widgets/counter_widget.dart';
 import 'package:food_app/views/widgets/custom_details_screen_app_bar.dart';
+import 'package:food_app/views/widgets/princing_widget.dart';
 import 'package:food_app/views/widgets/product_details_image_headerd.dart';
+import 'package:food_app/views/widgets/size_list_view.dart';
 import 'package:food_app/views/widgets/top_description_text.dart';
 
 class ProductDetailsScreen extends StatelessWidget {
@@ -19,7 +24,9 @@ class ProductDetailsScreen extends StatelessWidget {
           bottom: false,
           child: Column(
             children: [
-              const CustomDetailsScreenAppBar(),
+              CustomDetailsScreenAppBar(
+                product: product,
+              ),
               const ProductDetailsImageHeader(),
               const SizedBox(
                 height: 23,
@@ -60,44 +67,61 @@ class ProductDetailsScreen extends StatelessWidget {
                         ),
                         Row(
                           children: [
-                            Text(
-                              product.price.toString(),
+                            PricingWidget(
+                              price: product.price,
+                              fontSize: 28,
                             ),
                             const Spacer(),
-                            Container(
-                              height: 40,
-                              width: 118,
-                              decoration: BoxDecoration(
-                                color: AppColors.offWhite,
-                                borderRadius: BorderRadius.circular(26),
-                              ),
-                              child: const Padding(
-                                padding: EdgeInsets.symmetric(
-                                  horizontal: 4,
-                                ),
-                                child: Row(
-                                  children: [
-                                    AddRemoveWidegt(
-                                      child: Icon(
-                                        Icons.remove,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                    Spacer(),
-                                    Text('1'),
-                                    Spacer(),
-                                    AddRemoveWidegt(
-                                      child: Icon(
-                                        Icons.add,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            )
+                            CounterWidget(
+                              product: product,
+                            ),
                           ],
-                        )
+                        ),
+                        const SizedBox(
+                          height: 32,
+                        ),
+                        Text(
+                          'Choose Size :',
+                          style: AppStyles.dmSans12Medium.copyWith(
+                            fontSize: 20,
+                            color: Colors.grey,
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 12,
+                        ),
+                        SizeListView(
+                          product: product,
+                        ),
+                        const SizedBox(
+                          height: 32,
+                        ),
+                        Text(
+                          'About',
+                          style: AppStyles.dmSans18Bold.copyWith(
+                            fontWeight: FontWieghtHelper.medium,
+                            fontSize: 24,
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 12,
+                        ),
+                        Text(
+                          'Crispy seasoned chicken breast, topped with mandatory melted cheese and piled onto soft rolls with onion, avocado, lettuce, tomato and garlic mayo (if ordered). ',
+                          style: AppStyles.dmSans12Regular.copyWith(
+                            fontSize: 16,
+                            color: const Color(0xff0D0D0D),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 30,
+                        ),
+                        AddToCartButton(
+                          product: product,
+                        ),
+                        const SizedBox(
+                          height: 32,
+                        ),
                       ],
                     ),
                   ),

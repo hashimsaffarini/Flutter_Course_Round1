@@ -1,13 +1,17 @@
 import 'package:food_app/utils/app_constants.dart';
 import 'package:food_app/utils/app_images.dart';
 
+enum ProductSize { S, M, L, XL }
+
 class ProductModel {
   final String image;
   final String title;
   final String details;
   final double price;
   final String id;
-  // int quantity = 0;
+  int quantity = 1;
+
+  ProductSize size = ProductSize.S;
 
   ProductModel({
     required this.image,
@@ -16,6 +20,16 @@ class ProductModel {
     required this.price,
     required this.id,
   });
+
+  void incrementQuantity() {
+    quantity++;
+  }
+
+  void decrementQuantity() {
+    if (quantity > 1) {
+      quantity--;
+    }
+  }
 }
 
 List<ProductModel> productsList = [
@@ -62,4 +76,6 @@ List<ProductModel> productsList = [
     id: AppConstants.chicken,
   ),
 ];
-List<ProductModel> shoppingList = [];
+List<ProductModel> favoriteList = [];
+
+List<ProductModel> cartList = [];
