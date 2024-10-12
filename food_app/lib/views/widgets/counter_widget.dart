@@ -8,8 +8,10 @@ class CounterWidget extends StatefulWidget {
   const CounterWidget({
     super.key,
     required this.product,
+    required this.isChanged,
   });
   final ProductModel product;
+  final Function(bool isChanged) isChanged;
   @override
   State<CounterWidget> createState() => _CounterWidgetState();
 }
@@ -34,6 +36,7 @@ class _CounterWidgetState extends State<CounterWidget> {
               onTap: () {
                 setState(() {
                   widget.product.decrementQuantity();
+                  widget.isChanged(true);
                 });
               },
               child: const Icon(
@@ -53,6 +56,7 @@ class _CounterWidgetState extends State<CounterWidget> {
               onTap: () {
                 setState(() {
                   widget.product.incrementQuantity();
+                  widget.isChanged(true);
                 });
               },
               child: const Icon(

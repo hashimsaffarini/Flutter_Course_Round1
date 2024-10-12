@@ -11,9 +11,15 @@ import 'package:food_app/views/widgets/product_details_image_headerd.dart';
 import 'package:food_app/views/widgets/size_list_view.dart';
 import 'package:food_app/views/widgets/top_description_text.dart';
 
-class ProductDetailsScreen extends StatelessWidget {
+class ProductDetailsScreen extends StatefulWidget {
   const ProductDetailsScreen({super.key, required this.product});
   final ProductModel product;
+
+  @override
+  State<ProductDetailsScreen> createState() => _ProductDetailsScreenState();
+}
+
+class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +31,7 @@ class ProductDetailsScreen extends StatelessWidget {
           child: Column(
             children: [
               CustomDetailsScreenAppBar(
-                product: product,
+                product: widget.product,
               ),
               const ProductDetailsImageHeader(),
               const SizedBox(
@@ -61,19 +67,22 @@ class ProductDetailsScreen extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        TopDescriptionText(title: product.title),
+                        TopDescriptionText(title: widget.product.title),
                         const SizedBox(
                           height: 24,
                         ),
                         Row(
                           children: [
                             PricingWidget(
-                              price: product.price,
+                              price: widget.product.price,
                               fontSize: 28,
                             ),
                             const Spacer(),
                             CounterWidget(
-                              product: product,
+                              product: widget.product,
+                              isChanged: (bool isChanged) {
+                                setState(() {});
+                              },
                             ),
                           ],
                         ),
@@ -91,7 +100,7 @@ class ProductDetailsScreen extends StatelessWidget {
                           height: 12,
                         ),
                         SizeListView(
-                          product: product,
+                          product: widget.product,
                         ),
                         const SizedBox(
                           height: 32,
@@ -116,8 +125,27 @@ class ProductDetailsScreen extends StatelessWidget {
                         const SizedBox(
                           height: 30,
                         ),
-                        AddToCartButton(
-                          product: product,
+                        Row(
+                          children: [
+                            Expanded(
+                              flex: 2,
+                              child: AddToCartButton(
+                                product: widget.product,
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 4,
+                            ),
+                            Flexible(
+                              child: Text(
+                                'Total: \$${(widget.product.price * widget.product.quantity).toStringAsFixed(1)}',
+                                style: AppStyles.dmSans12Medium.copyWith(
+                                  fontSize: 20,
+                                  color: Colors.grey,
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                         const SizedBox(
                           height: 32,

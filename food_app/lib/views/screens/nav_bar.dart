@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:food_app/utils/app_colors.dart';
 import 'package:food_app/utils/app_styles.dart';
 import 'package:food_app/views/screens/home_screen.dart';
-import 'package:food_app/views/screens/profile_screen.dart';
-import 'package:food_app/views/screens/shop_screen.dart';
+import 'package:food_app/views/screens/cart_screen.dart';
+import 'package:food_app/views/screens/favorite_screen.dart';
 import 'package:iconsax/iconsax.dart';
 
 class NavBar extends StatefulWidget {
