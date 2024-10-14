@@ -9,9 +9,15 @@ class CounterWidget extends StatefulWidget {
     super.key,
     required this.product,
     required this.isChanged,
+    this.width = 118,
+    this.height = 40,
+    this.fontsize = 28,
   });
   final ProductModel product;
   final Function(bool isChanged) isChanged;
+  final double width;
+  final double height;
+  final double fontsize ;
   @override
   State<CounterWidget> createState() => _CounterWidgetState();
 }
@@ -20,8 +26,8 @@ class _CounterWidgetState extends State<CounterWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 40,
-      width: 118,
+      height: widget.height,
+      width: widget.width,
       decoration: BoxDecoration(
         color: AppColors.offWhite,
         borderRadius: BorderRadius.circular(26),
@@ -48,7 +54,7 @@ class _CounterWidgetState extends State<CounterWidget> {
             Text(
               widget.product.quantity.toString(),
               style: AppStyles.dmSans12Regular.copyWith(
-                fontSize: 28,
+                fontSize: widget.fontsize,
               ),
             ),
             const Spacer(),

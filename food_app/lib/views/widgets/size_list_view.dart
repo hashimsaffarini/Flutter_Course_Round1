@@ -13,7 +13,7 @@ class SizeListView extends StatefulWidget {
 }
 
 class _SizeListViewState extends State<SizeListView> {
-  int selectedSize = 0;
+  late int selectedSize = widget.product.size.index;
   @override
   Widget build(BuildContext context) {
     return SizedBox(

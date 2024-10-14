@@ -18,7 +18,7 @@ class _NavBarState extends State<NavBar> {
   List<Widget> screens = const [
     HomeScreen(),
     FavoriteScreen(),
-    ShoppingScreen(),
+    CartScreen(),
   ];
   @override
   Widget build(BuildContext context) {
@@ -75,7 +75,7 @@ class _NavBarState extends State<NavBar> {
                   icon: Icon(Iconsax.heart),
                 ),
                 NavigationDestination(
-                  label: 'Shopping',
+                  label: 'Cart',
                   icon: Icon(Iconsax.shopping_cart),
                 ),
               ],
