@@ -44,6 +44,7 @@ class _CustomFloatActionButtonState extends State<CustomFloatActionButton> {
                   TextButton(
                     onPressed: () {
                       Navigator.of(context).pop();
+                      context.read<NoteCubit>().textController.clear();
                     },
                     child: const Text('Cancel'),
                   ),
@@ -55,6 +56,7 @@ class _CustomFloatActionButtonState extends State<CustomFloatActionButton> {
                           .currentState!
                           .validate()) {
                         Navigator.of(context).pop();
+                        context.read<NoteCubit>().addNote();
                       } else {
                         setState(() {
                           autovalidateMode = AutovalidateMode.always;
