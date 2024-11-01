@@ -20,54 +20,55 @@ class _CustomFloatActionButtonState extends State<CustomFloatActionButton> {
       backgroundColor: Colors.blue,
       onPressed: () {
         showDialog(
-            context: context,
-            builder: (context) {
-              return AlertDialog(
-                title: const Text('Add Note'),
-                content: Form(
-                  autovalidateMode: autovalidateMode,
-                  key: context.read<NoteCubit>().formKey,
-                  child: TextFormField(
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please enter some text';
-                      }
-                      return null;
-                    },
-                    controller: context.read<NoteCubit>().textController,
-                    decoration: const InputDecoration(
-                      hintText: 'Enter your note',
-                    ),
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              title: const Text('Add Note'),
+              content: Form(
+                autovalidateMode: autovalidateMode,
+                key: context.read<NoteCubit>().formKey,
+                child: TextFormField(
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter some text';
+                    }
+                    return null;
+                  },
+                  controller: context.read<NoteCubit>().textController,
+                  decoration: const InputDecoration(
+                    hintText: 'Enter your note',
                   ),
                 ),
-                actions: [
-                  TextButton(
-                    onPressed: () {
+              ),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                    context.read<NoteCubit>().textController.clear();
+                  },
+                  child: const Text('Cancel'),
+                ),
+                TextButton(
+                  onPressed: () {
+                    if (context
+                        .read<NoteCubit>()
+                        .formKey
+                        .currentState!
+                        .validate()) {
                       Navigator.of(context).pop();
-                      context.read<NoteCubit>().textController.clear();
-                    },
-                    child: const Text('Cancel'),
-                  ),
-                  TextButton(
-                    onPressed: () {
-                      if (context
-                          .read<NoteCubit>()
-                          .formKey
-                          .currentState!
-                          .validate()) {
-                        Navigator.of(context).pop();
-                        context.read<NoteCubit>().addNote();
-                      } else {
-                        setState(() {
-                          autovalidateMode = AutovalidateMode.always;
-                        });
-                      }
-                    },
-                    child: const Text('Add'),
-                  ),
-                ],
-              );
-            });
+                      context.read<NoteCubit>().addNote();
+                    } else {
+                      setState(() {
+                        autovalidateMode = AutovalidateMode.always;
+                      });
+                    }
+                  },
+                  child: const Text('Add'),
+                ),
+              ],
+            );
+          },
+        );
       },
       child: const Icon(Icons.add),
     );

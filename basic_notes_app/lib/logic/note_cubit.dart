@@ -17,7 +17,7 @@ class NoteCubit extends Cubit<NoteState> {
 
   void addNote() async {
     try {
-      emit(NoteLoading());
+      emit(AddNoteLoading());
       final textContent = textController.text;
       await homeServices.addNote(
         note: NoteModel(
@@ -26,9 +26,21 @@ class NoteCubit extends Cubit<NoteState> {
         ),
       );
       textController.clear();
-      emit(NoteSuccess());
+      emit(AddNoteSuccess());
+      getNotes();
     } catch (e) {
-      emit(NoteFailure());
+      emit(AddNoteFailure());
+    }
+  }
+
+  void deleteNote({required String id}) async {
+    emit(DeleteNoteLoading());
+    try {
+      await homeServices.deleteNote(id: id);
+      emit(DeleteNoteSuccess());
+      getNotes();
+    } catch (e) {
+      emit(DeleteNoteFailure());
     }
   }
 

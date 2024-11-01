@@ -10,10 +10,16 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(BlocProvider(
-    create: (context) => NoteCubit(),
-    child: const BasicNotesApp(),
-  ));
+  runApp(
+    BlocProvider(
+      create: (context) {
+        final noteCubit = NoteCubit();
+        noteCubit.getNotes();
+        return noteCubit;
+      },
+      child: const BasicNotesApp(),
+    ),
+  );
 }
 
 class BasicNotesApp extends StatelessWidget {

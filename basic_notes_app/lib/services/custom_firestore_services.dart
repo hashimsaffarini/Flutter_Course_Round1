@@ -10,9 +10,11 @@ class CustomFirestoreServices {
     required Map<String, dynamic> data,
   }) async {
     try {
-      await firestore.collection(path).add(data);
+      //await firestore.collection('notes').add(data);
+      await firestore.doc(path).set(data);
     } catch (e) {
       log(e.toString());
+      throw Exception(e);
     }
   }
 
@@ -21,6 +23,7 @@ class CustomFirestoreServices {
       await firestore.doc(path).delete();
     } catch (e) {
       log(e.toString());
+      throw Exception(e);
     }
   }
 
