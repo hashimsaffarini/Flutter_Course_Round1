@@ -81,3 +81,12 @@ flutter_launcher_icons:
   ios: true
   image_path: "assets/icon_app.png"
   min_sdk_android: 21
+  adaptive_icon_background: "#000000"
+  adaptive_icon_foreground: "assets/icon_app.png"
+
+
+flutter_assets:
+  assets_path: assets/
+  output_path: lib/utils/
+  filename: app_images.dart
+  field_prefix:

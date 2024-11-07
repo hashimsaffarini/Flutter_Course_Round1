@@ -1,5 +1,5 @@
 import 'package:ecommerce_app/utils/app_router.dart';
-import 'package:ecommerce_app/views/auth/screens/signup_screen.dart';
+import 'package:ecommerce_app/views/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -15,7 +15,7 @@ class EcommerceApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Ecommerce App',
       onGenerateRoute: AppRouter.onGenerateRoute,
-      initialRoute: SignupScreen.routeName,
+      initialRoute: SplashScreen.routeName,
     );
   }
 }
