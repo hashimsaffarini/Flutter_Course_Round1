@@ -1,23 +1,47 @@
-import 'package:ecommerce_app/utils/app_images.dart';
-import 'package:ecommerce_app/views/on_boarding/widgets/page_view_item.dart';
+import 'package:ecommerce_app/views/on_boarding/widgets/dots_indicator.dart';
+import 'package:ecommerce_app/views/on_boarding/widgets/on_boarding_page_view.dart';
 import 'package:flutter/material.dart';
 
-class OnBoardingScreenBody extends StatelessWidget {
+class OnBoardingScreenBody extends StatefulWidget {
   const OnBoardingScreenBody({super.key});
 
   @override
+  State<OnBoardingScreenBody> createState() => _OnBoardingScreenBodyState();
+}
+
+class _OnBoardingScreenBodyState extends State<OnBoardingScreenBody> {
+  late PageController _pageController;
+  int currentPage = 0;
+  @override
+  void initState() {
+    super.initState();
+    _pageController = PageController();
+
+    _pageController.addListener(() {
+      setState(() {
+        currentPage = _pageController.page!.round();
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return PageView(
-      children: const [
-        PageViewItem(
-          image: Assets.onBoardingImage1,
-          title: 'Welcome to E-commerce App',
-          description: 'Buy your favorite products with ease',
+    return Column(
+      children: [
+        Expanded(
+          child: OnBoardingPageView(
+            pageController: _pageController,
+            currentPage: currentPage,
+          ),
         ),
-        PageViewItem(
-          image: Assets.onBoardingImage2,
-          title: 'Fast Delivery',
-          description: 'Get your products delivered at your doorstep',
+        DotsIndicator(
+          currentPage: currentPage,
         ),
       ],
     );

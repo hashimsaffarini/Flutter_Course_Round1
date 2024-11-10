@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/utils/app_images.dart';
 import 'package:ecommerce_app/utils/app_styles.dart';
 import 'package:ecommerce_app/views/on_boarding/on_boarding_screen.dart';
 import 'package:flutter/material.dart';
@@ -12,8 +13,8 @@ class SplashScreenBody extends StatefulWidget {
 class _SplashScreenBodyState extends State<SplashScreenBody>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
-  late Animation<Offset> _titleAnimation;
-  late Animation<Offset> _subtitleAnimation;
+  late Animation<double> _imageAnimation;
+  late Animation<Offset> _textAnimation;
   @override
   void initState() {
     super.initState();
@@ -21,8 +22,8 @@ class _SplashScreenBodyState extends State<SplashScreenBody>
       duration: const Duration(seconds: 2),
       vsync: this,
     );
-    _titleAnimation = Tween<Offset>(
-      begin: const Offset(0, 10),
+    _textAnimation = Tween<Offset>(
+      begin: const Offset(0, 5),
       end: Offset.zero,
     ).animate(
       CurvedAnimation(
@@ -30,9 +31,9 @@ class _SplashScreenBodyState extends State<SplashScreenBody>
         curve: Curves.easeInOut,
       ),
     );
-    _subtitleAnimation = Tween<Offset>(
-      begin: const Offset(0, -5),
-      end: Offset.zero,
+    _imageAnimation = Tween<double>(
+      begin: 0,
+      end: 1,
     ).animate(
       CurvedAnimation(
         parent: _controller,
@@ -67,31 +68,29 @@ class _SplashScreenBodyState extends State<SplashScreenBody>
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Column(
+      child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          SlideTransition(
-            position: _titleAnimation,
-            child: Text(
-              'Kutuku',
-              style: AppStyles.roboto42Regular.copyWith(
-                fontWeight: FontWeight.bold,
-              ),
+          AnimatedBuilder(
+            animation: _imageAnimation,
+            builder: (context, child) {
+              return Transform.scale(
+                scale: _imageAnimation.value,
+                child: child,
+              );
+            },
+            child: Image.asset(
+              Assets.splashIcon,
             ),
           ),
-          const SizedBox(
-            height: 2,
-          ),
+          const SizedBox(width: 10),
           SlideTransition(
-            position: _subtitleAnimation,
+            position: _textAnimation,
             child: Text(
-              'Any Shopping just from your here',
-              style: AppStyles.roboto42Regular.copyWith(
-                fontSize: 14,
-                color: const Color(0xFFe1e4e9),
-              ),
+              'Stylish',
+              style: AppStyles.libreCaslonText40Bold,
             ),
-          ),
+          )
         ],
       ),
     );
