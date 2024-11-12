@@ -1,8 +1,11 @@
 import 'package:ecommerce_app/utils/app_router.dart';
+import 'package:ecommerce_app/utils/shared_pref.dart';
 import 'package:ecommerce_app/views/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await SharedPref.init();
   runApp(const EcommerceApp());
 }
 

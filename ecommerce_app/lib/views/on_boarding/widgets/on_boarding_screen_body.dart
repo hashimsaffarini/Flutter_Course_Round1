@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/views/on_boarding/widgets/custom_app_bar.dart';
 import 'package:ecommerce_app/views/on_boarding/widgets/dots_indicator.dart';
 import 'package:ecommerce_app/views/on_boarding/widgets/on_boarding_page_view.dart';
 import 'package:flutter/material.dart';
@@ -34,6 +35,9 @@ class _OnBoardingScreenBodyState extends State<OnBoardingScreenBody> {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        CustomAppBar(
+          currentPage: currentPage,
+        ),
         Expanded(
           child: OnBoardingPageView(
             pageController: _pageController,
@@ -42,6 +46,7 @@ class _OnBoardingScreenBodyState extends State<OnBoardingScreenBody> {
         ),
         DotsIndicator(
           currentPage: currentPage,
+          pageController: _pageController,
         ),
       ],
     );

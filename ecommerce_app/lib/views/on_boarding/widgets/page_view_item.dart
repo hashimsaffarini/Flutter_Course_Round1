@@ -1,4 +1,4 @@
-import 'package:ecommerce_app/views/on_boarding/widgets/custom_app_bar.dart';
+import 'package:ecommerce_app/utils/app_styles.dart';
 import 'package:flutter/material.dart';
 
 class PageViewItem extends StatelessWidget {
@@ -16,9 +16,6 @@ class PageViewItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        CustomAppBar(
-          currentPage: currentPage,
-        ),
         SizedBox(
           height: MediaQuery.of(context).size.height * 0.5,
           child: Stack(
@@ -36,6 +33,7 @@ class PageViewItem extends StatelessWidget {
         ),
         Text(
           title,
+          style: AppStyles.montserrat24extraBold,
         ),
         const SizedBox(
           height: 10,
@@ -43,6 +41,7 @@ class PageViewItem extends StatelessWidget {
         Text(
           textAlign: TextAlign.center,
           description,
+          style: AppStyles.montserrat14SimeBold,
         ),
       ],
     );

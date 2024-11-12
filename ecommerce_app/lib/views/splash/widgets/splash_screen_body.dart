@@ -1,5 +1,8 @@
 import 'package:ecommerce_app/utils/app_images.dart';
 import 'package:ecommerce_app/utils/app_styles.dart';
+import 'package:ecommerce_app/utils/constants.dart';
+import 'package:ecommerce_app/utils/shared_pref.dart';
+import 'package:ecommerce_app/views/auth/screens/signup_screen.dart';
 import 'package:ecommerce_app/views/on_boarding/on_boarding_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -46,13 +49,14 @@ class _SplashScreenBodyState extends State<SplashScreenBody>
   }
 
   navigatorToOnBoardingScreen() {
+    bool isAppOpened = SharedPref.getBool(isUserOpenedApp);
     return Future.delayed(
       const Duration(seconds: 3),
       () {
         if (mounted) {
           return Navigator.pushReplacementNamed(
             context,
-            OnBoardingScreen.routeName,
+            isAppOpened ? SignupScreen.routeName : OnBoardingScreen.routeName,
           );
         }
       },

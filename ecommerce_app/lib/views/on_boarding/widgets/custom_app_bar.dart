@@ -1,3 +1,7 @@
+import 'package:ecommerce_app/utils/app_styles.dart';
+import 'package:ecommerce_app/utils/constants.dart';
+import 'package:ecommerce_app/utils/shared_pref.dart';
+import 'package:ecommerce_app/views/auth/screens/signup_screen.dart';
 import 'package:flutter/material.dart';
 
 class CustomAppBar extends StatelessWidget {
@@ -7,14 +11,43 @@ class CustomAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Text(
-          '${currentPage + 1}/3',
+        Row(
+          children: [
+            Text(
+              '${currentPage + 1}',
+              style: AppStyles.montserrat18semiBold.copyWith(
+                color: Colors.black,
+              ),
+            ),
+            Text(
+              '/3',
+              style: AppStyles.montserrat18semiBold.copyWith(
+                color: const Color(0xffA0A0A1),
+              ),
+            ),
+          ],
         ),
         const Spacer(),
-        const Text(
-          'Skip',
+        GestureDetector(
+          onTap: () {
+            SharedPref.setBool(isUserOpenedApp, true);
+            Navigator.pushReplacementNamed(context, SignupScreen.routeName);
+          },
+          child: Text(
+            'Skip',
+            style: AppStyles.montserrat18semiBold.copyWith(
+              color: Colors.black,
+            ),
+          ),
         ),
       ],
     );
   }
 }
+
+// local sql , no sql 
+
+// hive no sql 
+// sqflite sql
+
+// shared prefrences == > map 
