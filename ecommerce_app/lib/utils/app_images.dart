@@ -2,9 +2,17 @@
 class Assets {
   Assets._();
   
+  /// Assets for eye
+  /// assets/eye.svg
+  static const String eye = "assets/eye.svg";
+
   /// Assets for iconApp
   /// assets/icon_app.png
   static const String iconApp = "assets/icon_app.png";
+
+  /// Assets for lock
+  /// assets/lock.svg
+  static const String lock = "assets/lock.svg";
 
   /// Assets for onBoardingImage1
   /// assets/on_boarding_image1.png
@@ -21,5 +29,9 @@ class Assets {
   /// Assets for splashIcon
   /// assets/splash_icon.png
   static const String splashIcon = "assets/splash_icon.png";
+
+  /// Assets for user
+  /// assets/user.svg
+  static const String user = "assets/user.svg";
 }
 

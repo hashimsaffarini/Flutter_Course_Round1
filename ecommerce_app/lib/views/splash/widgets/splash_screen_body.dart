@@ -2,9 +2,10 @@ import 'package:ecommerce_app/utils/app_images.dart';
 import 'package:ecommerce_app/utils/app_styles.dart';
 import 'package:ecommerce_app/utils/constants.dart';
 import 'package:ecommerce_app/utils/shared_pref.dart';
-import 'package:ecommerce_app/views/auth/screens/signup_screen.dart';
+import 'package:ecommerce_app/views/auth/screens/signin_screen.dart';
 import 'package:ecommerce_app/views/on_boarding/on_boarding_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SplashScreenBody extends StatefulWidget {
   const SplashScreenBody({super.key});
@@ -56,7 +57,7 @@ class _SplashScreenBodyState extends State<SplashScreenBody>
         if (mounted) {
           return Navigator.pushReplacementNamed(
             context,
-            isAppOpened ? SignupScreen.routeName : OnBoardingScreen.routeName,
+            isAppOpened ? SigninScreen.routeName : OnBoardingScreen.routeName,
           );
         }
       },
@@ -87,7 +88,7 @@ class _SplashScreenBodyState extends State<SplashScreenBody>
               Assets.splashIcon,
             ),
           ),
-          const SizedBox(width: 10),
+           SizedBox(width: 10.w),
           SlideTransition(
             position: _textAnimation,
             child: Text(

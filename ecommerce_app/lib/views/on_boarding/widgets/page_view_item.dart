@@ -1,5 +1,6 @@
 import 'package:ecommerce_app/utils/app_styles.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PageViewItem extends StatelessWidget {
   const PageViewItem({
@@ -17,7 +18,7 @@ class PageViewItem extends StatelessWidget {
     return Column(
       children: [
         SizedBox(
-          height: MediaQuery.of(context).size.height * 0.5,
+          height: MediaQuery.of(context).size.height * 0.5.h,
           child: Stack(
             children: [
               Positioned.fill(
@@ -28,15 +29,15 @@ class PageViewItem extends StatelessWidget {
             ],
           ),
         ),
-        const SizedBox(
-          height: 33,
+        SizedBox(
+          height: 33.h,
         ),
         Text(
           title,
           style: AppStyles.montserrat24extraBold,
         ),
-        const SizedBox(
-          height: 10,
+        SizedBox(
+          height: 10.h,
         ),
         Text(
           textAlign: TextAlign.center,

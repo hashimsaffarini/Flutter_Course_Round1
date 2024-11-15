@@ -4,6 +4,7 @@ import 'package:ecommerce_app/utils/shared_pref.dart';
 import 'package:ecommerce_app/views/auth/screens/signup_screen.dart';
 import 'package:ecommerce_app/views/on_boarding/widgets/custom_dot_indicator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class DotsIndicator extends StatelessWidget {
   const DotsIndicator({
@@ -42,7 +43,7 @@ class DotsIndicator extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: List.generate(3, (index) {
             return Padding(
-              padding: const EdgeInsets.only(right: 10),
+              padding: EdgeInsets.only(right: 10.w),
               child: CustomDotIndicator(
                 isActive: index == currentPage,
               ),
