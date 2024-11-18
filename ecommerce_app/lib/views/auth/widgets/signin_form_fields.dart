@@ -6,8 +6,8 @@ import 'package:ecommerce_app/views/auth/widgets/custom_text_from_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class CustomFormFields extends StatelessWidget {
-  const CustomFormFields({super.key});
+class SigninFormFields extends StatelessWidget {
+  const SigninFormFields({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,9 @@ class CustomFormFields extends StatelessWidget {
             prefixIcon: Assets.user,
           ),
           verticalSpace(34),
-          const CustomPasswordTextFormField(),
+          CustomPasswordTextFormField(
+            controller: context.read<SigninCubit>().passwordController,
+          ),
         ],
       ),
     );

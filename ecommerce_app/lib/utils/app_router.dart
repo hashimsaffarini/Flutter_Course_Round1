@@ -1,4 +1,5 @@
 import 'package:ecommerce_app/views/auth/logic/signin/signin_cubit.dart';
+import 'package:ecommerce_app/views/auth/logic/signup/signup_cubit.dart';
 import 'package:ecommerce_app/views/auth/screens/signin_screen.dart';
 import 'package:ecommerce_app/views/auth/screens/signup_screen.dart';
 import 'package:ecommerce_app/views/on_boarding/on_boarding_screen.dart';
@@ -18,7 +19,10 @@ class AppRouter {
         );
       case SignupScreen.routeName:
         return MaterialPageRoute(
-          builder: (_) => const SignupScreen(),
+          builder: (_) => BlocProvider(
+            create: (context) => SignupCubit(),
+            child: const SignupScreen(),
+          ),
         );
 
       case SplashScreen.routeName:

@@ -1,11 +1,15 @@
 import 'package:ecommerce_app/utils/app_images.dart';
-import 'package:ecommerce_app/views/auth/logic/signin/signin_cubit.dart';
 import 'package:ecommerce_app/views/auth/widgets/custom_text_from_field.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CustomPasswordTextFormField extends StatefulWidget {
-  const CustomPasswordTextFormField({super.key});
+  const CustomPasswordTextFormField({
+    super.key,
+    required this.controller,
+    this.hintText = 'Password',
+  });
+  final TextEditingController controller;
+  final String hintText;
   @override
   State<CustomPasswordTextFormField> createState() =>
       _CustomPasswordTextFormFieldState();
@@ -17,14 +21,14 @@ class _CustomPasswordTextFormFieldState
   @override
   Widget build(BuildContext context) {
     return CustomTextFromField(
-      controller: context.read<SigninCubit>().passwordController,
+      controller: widget.controller,
       obscureText: isObscure,
       onTap: () {
         setState(() {
           isObscure = !isObscure;
         });
       },
-      hintText: 'Password',
+      hintText: widget.hintText,
       prefixIcon: Assets.lock,
       suffixIcon: true,
     );
