@@ -29,6 +29,8 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   cupertino_icons: ^1.0.8
+  firebase_auth: ^5.3.3
+  firebase_core: ^3.8.0
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.6
@@ -36,6 +38,7 @@ dependencies:
   flutter_screenutil: ^5.9.3
   flutter_svg: ^2.0.14
   google_fonts: ^6.2.1
+  modal_progress_hud_nsn: ^0.5.1
   shared_preferences: ^2.3.3
 
 dev_dependencies:

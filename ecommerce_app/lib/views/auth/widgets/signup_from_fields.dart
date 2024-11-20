@@ -12,20 +12,45 @@ class SignupFromFields extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Form(
+      autovalidateMode: context.read<SignupCubit>().autovalidateMode,
       key: context.read<SignupCubit>().formKey,
       child: Column(
         children: [
           CustomTextFromField(
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'Please enter your email';
+              } else if (!emailValidtor(value)) {
+                return 'Please enter a valid email';
+              }
+              return null;
+            },
             controller: context.read<SignupCubit>().emailController,
             hintText: 'Username or Email',
             prefixIcon: Assets.user,
           ),
           verticalSpace(34),
           CustomPasswordTextFormField(
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'Please enter your password';
+              }
+              return null;
+            },
             controller: context.read<SignupCubit>().passwordController,
           ),
           verticalSpace(34),
           CustomPasswordTextFormField(
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'Please enter your confirm password';
+              }
+              if (value !=
+                  context.read<SignupCubit>().passwordController.text) {
+                return 'Password does not match';
+              }
+              return null;
+            },
             hintText: 'Confirm Password',
             controller: context.read<SignupCubit>().confirmPasswordController,
           ),

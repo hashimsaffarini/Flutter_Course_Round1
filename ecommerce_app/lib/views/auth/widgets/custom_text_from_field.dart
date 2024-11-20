@@ -13,6 +13,7 @@ class CustomTextFromField extends StatelessWidget {
     this.obscureText = false,
     this.onTap,
     required this.controller,
+    this.validator,
   });
   final String hintText;
   final String prefixIcon;
@@ -20,9 +21,11 @@ class CustomTextFromField extends StatelessWidget {
   final bool obscureText;
   final Function()? onTap;
   final TextEditingController controller;
+  final String? Function(String?)? validator;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      validator: validator,
       controller: controller,
       obscureText: obscureText,
       cursorColor: AppColors.primaryColor,

@@ -1,12 +1,14 @@
 import 'package:ecommerce_app/utils/app_styles.dart';
 import 'package:ecommerce_app/utils/constants.dart';
 import 'package:ecommerce_app/utils/widgets/custom_button.dart';
+import 'package:ecommerce_app/views/auth/logic/signup/signup_cubit.dart';
 import 'package:ecommerce_app/views/auth/widgets/already_have_an_account.dart';
 import 'package:ecommerce_app/views/auth/widgets/or_continue_with.dart';
 import 'package:ecommerce_app/views/auth/widgets/public_offer.dart';
 import 'package:ecommerce_app/views/auth/widgets/signup_from_fields.dart';
 import 'package:ecommerce_app/views/auth/widgets/social_media_buttons.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SignupScreenBody extends StatelessWidget {
@@ -32,7 +34,19 @@ class SignupScreenBody extends StatelessWidget {
             verticalSpace(38),
             CustomButton(
               title: 'Create Account',
-              onPressed: () {},
+              onPressed: () {
+                if (context
+                    .read<SignupCubit>()
+                    .formKey
+                    .currentState!
+                    .validate()) {
+                  context.read<SignupCubit>().formKey.currentState!.save();
+                  context.read<SignupCubit>().signup();
+                } else {
+                  context.read<SignupCubit>().autovalidateMode =
+                      AutovalidateMode.always;
+                }
+              },
             ),
             verticalSpace(40),
             const OrContinueWith(),

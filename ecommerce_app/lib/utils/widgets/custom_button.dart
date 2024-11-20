@@ -21,7 +21,7 @@ class CustomButton extends StatelessWidget {
           ),
         ),
       ),
-      onPressed: () {},
+      onPressed: onPressed,
       child: Text(
         title,
         style: AppStyles.montserrat14SimeBold.copyWith(
