@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/core/utils/constants.dart';
 import 'package:ecommerce_app/views/auth/logic/signup/signup_cubit.dart';
 import 'package:ecommerce_app/views/auth/logic/signup/signup_state.dart';
 import 'package:ecommerce_app/views/auth/widgets/signup_screen_body.dart';
@@ -14,11 +15,7 @@ class SignupScreen extends StatelessWidget {
       body: BlocConsumer<SignupCubit, SignupState>(
         listener: (context, state) {
           if (state is SignupFailure) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text(state.message),
-              ),
-            );
+            buildError(context, state.message);
           } else if (state is SignupSuccess) {
             // Navigator.pushNamed(context, 'home');
           }

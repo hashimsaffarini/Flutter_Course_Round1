@@ -1,12 +1,14 @@
-import 'package:ecommerce_app/utils/app_styles.dart';
-import 'package:ecommerce_app/utils/constants.dart';
-import 'package:ecommerce_app/utils/widgets/custom_button.dart';
+import 'package:ecommerce_app/core/utils/app_styles.dart';
+import 'package:ecommerce_app/core/utils/constants.dart';
+import 'package:ecommerce_app/core/widgets/custom_button.dart';
+import 'package:ecommerce_app/views/auth/logic/signin/signin_cubit.dart';
 import 'package:ecommerce_app/views/auth/widgets/create_an_account.dart';
 import 'package:ecommerce_app/views/auth/widgets/signin_form_fields.dart';
 import 'package:ecommerce_app/views/auth/widgets/forget_password.dart';
 import 'package:ecommerce_app/views/auth/widgets/or_continue_with.dart';
 import 'package:ecommerce_app/views/auth/widgets/social_media_buttons.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SigninScreenBody extends StatelessWidget {
@@ -32,7 +34,19 @@ class SigninScreenBody extends StatelessWidget {
             verticalSpace(52),
             CustomButton(
               title: 'Login',
-              onPressed: () {},
+              onPressed: () {
+                if (context
+                    .read<SigninCubit>()
+                    .formKey
+                    .currentState!
+                    .validate()) {
+                  context.read<SigninCubit>().formKey.currentState!.save();
+                  context.read<SigninCubit>().signin();
+                } else {
+                  context.read<SigninCubit>().autovalidateMode =
+                      AutovalidateMode.always;
+                }
+              },
             ),
             verticalSpace(75),
             const OrContinueWith(),

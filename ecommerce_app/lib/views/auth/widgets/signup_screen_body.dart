@@ -1,6 +1,6 @@
-import 'package:ecommerce_app/utils/app_styles.dart';
-import 'package:ecommerce_app/utils/constants.dart';
-import 'package:ecommerce_app/utils/widgets/custom_button.dart';
+import 'package:ecommerce_app/core/utils/app_styles.dart';
+import 'package:ecommerce_app/core/utils/constants.dart';
+import 'package:ecommerce_app/core/widgets/custom_button.dart';
 import 'package:ecommerce_app/views/auth/logic/signup/signup_cubit.dart';
 import 'package:ecommerce_app/views/auth/widgets/already_have_an_account.dart';
 import 'package:ecommerce_app/views/auth/widgets/or_continue_with.dart';

@@ -1,4 +1,4 @@
-import 'package:ecommerce_app/utils/app_images.dart';
+import 'package:ecommerce_app/core/utils/app_images.dart';
 import 'package:ecommerce_app/views/auth/widgets/custom_text_from_field.dart';
 import 'package:flutter/material.dart';
 

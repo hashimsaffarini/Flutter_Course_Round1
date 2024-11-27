@@ -1,4 +1,4 @@
-import 'package:ecommerce_app/services/auth.dart';
+import 'package:ecommerce_app/core/services/auth.dart';
 import 'package:ecommerce_app/views/auth/logic/signup/signup_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

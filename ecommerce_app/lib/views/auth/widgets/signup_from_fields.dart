@@ -1,5 +1,5 @@
-import 'package:ecommerce_app/utils/app_images.dart';
-import 'package:ecommerce_app/utils/constants.dart';
+import 'package:ecommerce_app/core/utils/app_images.dart';
+import 'package:ecommerce_app/core/utils/constants.dart';
 import 'package:ecommerce_app/views/auth/logic/signup/signup_cubit.dart';
 import 'package:ecommerce_app/views/auth/widgets/custom_password_text_form_field.dart';
 import 'package:ecommerce_app/views/auth/widgets/custom_text_from_field.dart';

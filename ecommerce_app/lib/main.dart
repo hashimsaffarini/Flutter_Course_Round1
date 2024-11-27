@@ -1,7 +1,7 @@
 import 'package:ecommerce_app/firebase_options.dart';
-import 'package:ecommerce_app/utils/app_colors.dart';
-import 'package:ecommerce_app/utils/app_router.dart';
-import 'package:ecommerce_app/utils/shared_pref.dart';
+import 'package:ecommerce_app/core/utils/app_colors.dart';
+import 'package:ecommerce_app/core/utils/app_router.dart';
+import 'package:ecommerce_app/core/utils/shared_pref.dart';
 import 'package:ecommerce_app/views/splash/splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';

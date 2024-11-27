@@ -18,3 +18,11 @@ horizontalSpace(double width) {
 bool emailValidtor(String email) => RegExp(
         r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
     .hasMatch(email);
+
+void buildError(BuildContext context, String message) {
+  ScaffoldMessenger.of(context).showSnackBar(
+    SnackBar(
+      content: Text(message),
+    ),
+  );
+}

@@ -1,4 +1,4 @@
-import 'package:ecommerce_app/utils/app_styles.dart';
+import 'package:ecommerce_app/core/utils/app_styles.dart';
 import 'package:flutter/material.dart';
 
 class PublicOffer extends StatelessWidget {

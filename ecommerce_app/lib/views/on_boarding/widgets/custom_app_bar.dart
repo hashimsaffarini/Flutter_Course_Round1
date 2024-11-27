@@ -1,6 +1,6 @@
-import 'package:ecommerce_app/utils/app_styles.dart';
-import 'package:ecommerce_app/utils/constants.dart';
-import 'package:ecommerce_app/utils/shared_pref.dart';
+import 'package:ecommerce_app/core/utils/app_styles.dart';
+import 'package:ecommerce_app/core/utils/constants.dart';
+import 'package:ecommerce_app/core/utils/shared_pref.dart';
 import 'package:ecommerce_app/views/auth/screens/signup_screen.dart';
 import 'package:flutter/material.dart';
 
