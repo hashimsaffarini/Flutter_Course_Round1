@@ -26,7 +26,19 @@ class SignupFromFields extends StatelessWidget {
               return null;
             },
             controller: context.read<SignupCubit>().emailController,
-            hintText: 'Username or Email',
+            hintText: 'Email',
+            prefixIcon: Assets.user,
+          ),
+          verticalSpace(34),
+          CustomTextFromField(
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'Please enter your username';
+              }
+              return null;
+            },
+            controller: context.read<SignupCubit>().nameController,
+            hintText: 'Username',
             prefixIcon: Assets.user,
           ),
           verticalSpace(34),

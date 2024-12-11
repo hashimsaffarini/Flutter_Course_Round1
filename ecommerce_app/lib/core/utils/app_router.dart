@@ -5,6 +5,7 @@ import 'package:ecommerce_app/views/auth/screens/signup_screen.dart';
 import 'package:ecommerce_app/views/home/screens/home_screen.dart';
 import 'package:ecommerce_app/views/on_boarding/on_boarding_screen.dart';
 import 'package:ecommerce_app/views/splash/splash_screen.dart';
+import 'package:ecommerce_app/views/welcome/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -29,6 +30,10 @@ class AppRouter {
       case SplashScreen.routeName:
         return MaterialPageRoute(
           builder: (_) => const SplashScreen(),
+        );
+      case WelcomeScreen.routeName:
+        return MaterialPageRoute(
+          builder: (_) => const WelcomeScreen(),
         );
       case OnBoardingScreen.routeName:
         return MaterialPageRoute(

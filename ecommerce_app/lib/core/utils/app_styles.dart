@@ -15,6 +15,11 @@ class AppStyles {
     fontSize: 14.sp,
     color: const Color(0xffA8A8A9),
   );
+  static TextStyle montserrat14Regular = GoogleFonts.montserrat(
+    fontWeight: FontWieghtHelper.regular,
+    fontSize: 14.sp,
+    color: const Color(0xffF2F2F2),
+  );
   static TextStyle montserrat12Medium = GoogleFonts.montserrat(
     fontWeight: FontWieghtHelper.medium,
     fontSize: 12.sp,

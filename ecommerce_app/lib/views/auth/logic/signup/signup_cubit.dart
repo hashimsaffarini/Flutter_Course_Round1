@@ -8,6 +8,8 @@ class SignupCubit extends Cubit<SignupState> {
 
   TextEditingController emailController = TextEditingController();
 
+  TextEditingController nameController = TextEditingController();
+
   TextEditingController passwordController = TextEditingController();
 
   TextEditingController confirmPasswordController = TextEditingController();
@@ -23,6 +25,7 @@ class SignupCubit extends Cubit<SignupState> {
       await auth.signUpWithEmailAndPassword(
         email: emailController.text,
         password: passwordController.text,
+        name: nameController.text,
       );
       emit(SignupSuccess());
     } catch (e) {
