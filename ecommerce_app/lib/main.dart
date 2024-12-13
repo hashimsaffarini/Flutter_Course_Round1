@@ -30,7 +30,7 @@ class EcommerceApp extends StatelessWidget {
         onGenerateRoute: AppRouter.onGenerateRoute,
         initialRoute: SplashScreen.routeName,
         theme: ThemeData(
-          scaffoldBackgroundColor: Colors.white,
+          scaffoldBackgroundColor: const Color(0xffFDFDFD),
           colorScheme: ColorScheme.fromSwatch().copyWith(
             primary: AppColors.primaryColor.withOpacity(0.5),
           ),

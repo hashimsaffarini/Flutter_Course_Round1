@@ -1,8 +1,10 @@
+import 'package:ecommerce_app/core/services/auth.dart';
 import 'package:ecommerce_app/core/utils/app_images.dart';
 import 'package:ecommerce_app/core/utils/app_styles.dart';
 import 'package:ecommerce_app/core/utils/constants.dart';
 import 'package:ecommerce_app/core/utils/shared_pref.dart';
 import 'package:ecommerce_app/views/auth/screens/signin_screen.dart';
+import 'package:ecommerce_app/views/home/screens/home_screen.dart';
 import 'package:ecommerce_app/views/on_boarding/on_boarding_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -49,15 +51,18 @@ class _SplashScreenBodyState extends State<SplashScreenBody>
     navigatorToOnBoardingScreen();
   }
 
-  navigatorToOnBoardingScreen() {
+  navigatorToOnBoardingScreen() async {
     bool isAppOpened = SharedPref.getBool(isUserOpenedApp);
+    bool isLoggedIn = await AuthImpl().isCurrentUserLoggedIn();
     return Future.delayed(
       const Duration(seconds: 3),
       () {
         if (mounted) {
           return Navigator.pushReplacementNamed(
             context,
-            isAppOpened ? SigninScreen.routeName : OnBoardingScreen.routeName,
+            isAppOpened
+                ? (isLoggedIn ?HomeScreen .routeName : SigninScreen.routeName)
+                : OnBoardingScreen.routeName,
           );
         }
       },
@@ -88,7 +93,7 @@ class _SplashScreenBodyState extends State<SplashScreenBody>
               Assets.splashIcon,
             ),
           ),
-           SizedBox(width: 10.w),
+          SizedBox(width: 10.w),
           SlideTransition(
             position: _textAnimation,
             child: Text(

@@ -14,6 +14,8 @@ abstract class Auth {
     required String email,
     required String password,
   });
+
+  Future<bool> isCurrentUserLoggedIn();
 }
 
 class AuthImpl implements Auth {
@@ -73,5 +75,10 @@ class AuthImpl implements Auth {
     } catch (e) {
       throw (e.toString());
     }
+  }
+
+  @override
+  Future<bool> isCurrentUserLoggedIn() async {
+    return firebaseAuth.currentUser != null;
   }
 }
