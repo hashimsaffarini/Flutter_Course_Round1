@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/core/utils/app_colors.dart';
 import 'package:ecommerce_app/core/utils/app_images.dart';
 import 'package:ecommerce_app/core/utils/app_styles.dart';
 import 'package:ecommerce_app/core/utils/constants.dart';
@@ -6,6 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 AppBar buildHomeAppBar() {
   return AppBar(
+    surfaceTintColor: AppColors.primaryColor,
     leading: IconButton(
       icon: const Icon(Icons.menu),
       onPressed: () {},

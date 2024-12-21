@@ -28,6 +28,7 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  carousel_slider: ^5.0.0
   cloud_firestore: ^5.5.1
   cupertino_icons: ^1.0.8
   firebase_auth: ^5.3.3
@@ -93,6 +94,6 @@ flutter_launcher_icons:
 
 flutter_assets:
   assets_path: assets/
-  output_path: lib/utils/
+  output_path: lib/core/utils
   filename: app_images.dart
   field_prefix: null

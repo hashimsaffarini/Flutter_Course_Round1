@@ -7,7 +7,7 @@ class FeaturedItemModel {
 
 List<FeaturedItemModel> featuredItems = [
   FeaturedItemModel(
-    image: 'assets/profile.png',
+    image: 'assets/image1.png',
     title: 'Beautiy',
   ),
   FeaturedItemModel(

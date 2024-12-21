@@ -3,6 +3,7 @@ import 'package:ecommerce_app/core/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+
 class CustomFeaturedContainer extends StatelessWidget {
   const CustomFeaturedContainer({
     super.key,
@@ -14,11 +15,19 @@ class CustomFeaturedContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 21.h,
+      height: 24.h,
       width: 61.w,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(6.r),
+        boxShadow: const [
+          BoxShadow(
+            color: Color(0x14000000),
+            blurRadius: 16,
+            offset: Offset(1, 1),
+            spreadRadius: 0,
+          ),
+        ],
       ),
       child: Center(
         child: Row(

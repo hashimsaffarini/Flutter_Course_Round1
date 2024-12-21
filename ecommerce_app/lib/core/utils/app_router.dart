@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/logic/home/home_cubit.dart';
 import 'package:ecommerce_app/views/auth/logic/signin/signin_cubit.dart';
 import 'package:ecommerce_app/views/auth/logic/signup/signup_cubit.dart';
 import 'package:ecommerce_app/views/auth/screens/signin_screen.dart';
@@ -41,7 +42,10 @@ class AppRouter {
         );
       case HomeScreen.routeName:
         return MaterialPageRoute(
-          builder: (_) => const HomeScreen(),
+          builder: (_) => BlocProvider(
+            create: (context) => HomeCubit(),
+            child: const HomeScreen(),
+          ),
         );
       default:
         return MaterialPageRoute(
