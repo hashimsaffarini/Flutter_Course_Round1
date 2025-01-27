@@ -31,6 +31,16 @@ class ListViewItem extends StatelessWidget {
             ),
             child: Image.network(
               product.image,
+              loadingBuilder: (context, child, loadingProgress) =>
+                  loadingProgress == null
+                      ? child
+                      : const Center(
+                          child: CircularProgressIndicator(
+                            color: AppColors.primaryColor,
+                          ),
+                        ),
+              errorBuilder: (context, error, stackTrace) =>
+                  const Icon(Icons.error),
             ),
           ),
           Padding(
@@ -124,6 +134,8 @@ class ListViewItem extends StatelessWidget {
                             ),
                             child: Center(
                               child: BlocBuilder<HomeCubit, HomeState>(
+                                buildWhen: (previous, current) =>
+                                    current is FavoriteChangeSuccsess,
                                 builder: (context, state) {
                                   return GestureDetector(
                                     onTap: () {
@@ -132,7 +144,9 @@ class ListViewItem extends StatelessWidget {
                                           .toggleFavorite(product);
                                     },
                                     child: Icon(
-                                      product.isFavourite
+                                      context
+                                              .read<HomeCubit>()
+                                              .isFavorite(product)
                                           ? Icons.favorite
                                           : Icons.favorite_border,
                                       color: Colors.white,

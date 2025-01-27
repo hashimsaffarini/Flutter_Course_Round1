@@ -1,5 +1,3 @@
-// import 'package:ecommerce_app/core/utils/app_images.dart';
-
 class ProductItemModel {
   final String id;
   final String image;
@@ -8,7 +6,6 @@ class ProductItemModel {
   final double price;
   final int rating;
   final int discount;
-  bool isFavourite;
   ProductItemModel({
     required this.id,
     required this.image,
@@ -17,11 +14,10 @@ class ProductItemModel {
     required this.price,
     required this.rating,
     required this.discount,
-    this.isFavourite = false,
   });
 
   Map<String, dynamic> toMap() {
-    return {
+    return <String, dynamic>{
       'id': id,
       'image': image,
       'title': title,
@@ -29,12 +25,19 @@ class ProductItemModel {
       'price': price,
       'rating': rating,
       'discount': discount,
-      'isFavourite': isFavourite,
     };
   }
 
-  void toggleFavorite() {
-    isFavourite = !isFavourite;
+  factory ProductItemModel.fromMap(Map<String, dynamic> map) {
+    return ProductItemModel(
+      id: map['id'] ?? '',
+      image: map['image'] ?? '',
+      title: map['title'] ?? '',
+      description: map['description'] ?? '',
+      price: map['price'] ?? 0.0,
+      rating: map['rating'] ?? 0,
+      discount: map['discount'] ?? 0,
+    );
   }
 }
 

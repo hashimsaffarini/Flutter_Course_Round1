@@ -42,6 +42,7 @@ dependencies:
   google_fonts: ^6.2.1
   modal_progress_hud_nsn: ^0.5.1
   shared_preferences: ^2.3.3
+  skeletonizer: ^1.4.2
 
 dev_dependencies:
   flutter_lints: ^4.0.0

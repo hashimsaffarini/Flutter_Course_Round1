@@ -1,6 +1,8 @@
+// import 'package:ecommerce_app/logic/home/home_cubit.dart';
 import 'package:ecommerce_app/views/home/widgets/build_home_app_bar.dart';
 import 'package:ecommerce_app/views/home/widgets/home_screen_body.dart';
 import 'package:flutter/material.dart';
+// import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -14,6 +16,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
+    // context.read<HomeCubit>().fetchDataWhenOpenApp();
     // uploadProducts();
   }
 

@@ -43,7 +43,7 @@ class AppRouter {
       case HomeScreen.routeName:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
-            create: (context) => HomeCubit(),
+            create: (context) => HomeCubit()..fetchHomeData()..fetchDataWhenOpenApp(),
             child: const HomeScreen(),
           ),
         );
